@@ -1,0 +1,41 @@
+{application, eqotdd,
+ [{description, "Quote of the Day Daemon"},
+  {vsn, "0.0.0"},
+  {registered, []},
+  {mod, { eqotdd_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    ranch
+   ]},
+  {env,[
+    {new_quote_at, {24,0,0}},
+    {quote_order, random},
+    {quotes_source, eqotdd_file},
+    {quotes_file, {priv_file, eqotdd, "quotes"}},
+    {max_quote_length, 511},
+    {line_break, [$\r,$\n]},
+    {append_line_break, true},
+    {udp, true},
+    {udp_port, 8017},
+    {tcp, true},
+    {tcp_port, 8017},
+    {tls, false},
+    {tls_port, 8018}
+  ]},
+  {modules, [
+    eqotdd_app,
+    eqotdd_file,
+    eqotdd_protocol,
+    eqotdd_quotes_source,
+    eqotdd_server,
+    eqotdd_sup,
+    eqotdd_udp_sup,
+    eqotdd_udp,
+    quote
+  ]},
+
+  {maintainers, ["Lauri Moisio"]},
+  {licenses, ["MIT"]},
+  {links, ["https://github.com/lateio/eqotdd"]}
+ ]}.
