@@ -157,7 +157,7 @@ setup_quote(State0=#state{quotes_source=Source,last_changed=LastChanged,prev_has
     case Source:last_changed() of
         LastChanged ->
             NewIndex = new_quote_index(Length, PrevIndex),
-            {ok, Quote} = eqotdd_file:get(NewIndex),
+            {ok, Quote} = Source:get(NewIndex),
             case erlang:phash2(Quote) of
                 PrevHash when Length > 1 ->
                     State1 = State0#state{quote_index=NewIndex},
@@ -200,6 +200,8 @@ inc_refresh_tries(State=#state{refresh_tries=Tries}) ->
 
 
 -spec new_quote_index(non_neg_integer(), non_neg_integer()) -> non_neg_integer().
+new_quote_index(1, _) ->
+    0;
 new_quote_index(Length, Old) ->
     case application:get_env(quote_order) of
         {ok, in_order} ->

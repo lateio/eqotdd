@@ -1,6 +1,6 @@
 {application, eqotdd,
  [{description, "Quote of the Day Daemon"},
-  {vsn, "0.0.0"},
+  {vsn, "0.0.1"},
   {registered, []},
   {mod, { eqotdd_app, []}},
   {applications,
