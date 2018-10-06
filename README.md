@@ -103,7 +103,7 @@ The previous example defines the following four Quotes:
    This is the third quote.
    It contains a line break.
    ```
-4. % This is the last quote % with a few escaped percent and regular signs %%
+4. % This is the last quote % with a few escaped and regular percent signs %%
 
 In the simplest case, a Quote is just a single line of text. First character of a Quote line must not be whitespace (space or tab) or the percent sign. All trailing whitespace is discarded.
 
